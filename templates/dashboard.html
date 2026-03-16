@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Header -->
+<div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4">
+  <div>
+    <h1 class="page-title"><i class="bi bi-speedometer2 me-2"></i>Admin Dashboard</h1>
+    <p class="page-subtitle">Welcome back, <strong>{{ session.get('username') }}</strong> 👋</p>
+  </div>
+  <!-- <a href="/logout" class="btn btn-danger btn-sm">
+    <i class="bi bi-box-arrow-right me-1"></i>Logout
+  </a> -->
+</div>
+
+
+
+<!-- QUICK ACTIONS -->
+<p class="section-label">Quick Actions</p>
+<div class="row g-3">
+  <div class="col-sm-6 col-md-4">
+    <a href="/add_employee" class="action-card c-purple">
+      <span class="action-icon">➕</span>
+      <div class="action-title">Add Employee</div>
+      <div class="action-desc">Register a new employee into the system</div>
+    </a>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <a href="/view_employee" class="action-card c-teal">
+      <span class="action-icon">📋</span>
+      <div class="action-title">View Employees</div>
+      <div class="action-desc">See, edit and manage all employee records</div>
+    </a>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <a href="/about" class="action-card c-orange">
+      <span class="action-icon">ℹ️</span>
+      <div class="action-title">About EMS</div>
+      <div class="action-desc">Learn about what this system can do</div>
+    </a>
+  </div>
+</div>
+
+{% endblock %}

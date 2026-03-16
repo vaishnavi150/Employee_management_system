@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="text-center mb-5">
+  <h1 class="page-title">About <span style="color:#7c3aed">EMS</span></h1>
+  <p style="color:#6b7280;font-size:0.95rem;max-width:550px;margin:0 auto;">
+    A powerful, lightweight Employee Management System built to simplify HR operations.
+  </p>
+</div>
+
+<div class="row g-4 mb-5">
+  <div class="col-md-4">
+    <div class="feature-card f1">
+      <div class="feature-icon">➕</div>
+      <div class="feature-title">Add Employees</div>
+      <div class="feature-desc">Admin can securely add new employee records including department, salary, and contact info.</div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="feature-card f2">
+      <div class="feature-icon">✏️</div>
+      <div class="feature-title">Update Details</div>
+      <div class="feature-desc">Modify employee information at any time to keep all records accurate and current.</div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="feature-card f3">
+      <div class="feature-icon">📋</div>
+      <div class="feature-title">Manage Records</div>
+      <div class="feature-desc">View, delete and organize employee information with an intuitive dashboard.</div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="feature-card f4">
+      <div class="feature-icon">🔐</div>
+      <div class="feature-title">Role-Based Access</div>
+      <div class="feature-desc">Separate Admin and Employee logins to keep sensitive data protected.</div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="feature-card f5">
+      <div class="feature-icon">📧</div>
+      <div class="feature-title">Password Reset</div>
+      <div class="feature-desc">Forgot your password? Reset it securely via email with a time-limited token.</div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="feature-card f6">
+      <div class="feature-icon">📱</div>
+      <div class="feature-title">Fully Responsive</div>
+      <div class="feature-desc">Works beautifully on all screen sizes — desktop, tablet, and mobile.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Tech Stack -->
+<div class="card p-4 text-center">
+  <h5 class="page-title mb-3">⚙️ Tech Stack</h5>
+  <div class="d-flex flex-wrap justify-content-center gap-3">
+    <span class="chip chip-purple" style="font-size:0.85rem;padding:0.4rem 1rem;">🐍 Python</span>
+    <span class="chip chip-orange" style="font-size:0.85rem;padding:0.4rem 1rem;">🌶️ Flask</span>
+    <span class="chip chip-teal" style="font-size:0.85rem;padding:0.4rem 1rem;">🛢️ MySQL</span>
+    <span class="chip chip-green" style="font-size:0.85rem;padding:0.4rem 1rem;">🎨 Bootstrap 5</span>
+    <span class="chip" style="background:#fce7f3;color:#9d174d;font-size:0.85rem;padding:0.4rem 1rem;">📧 Flask-Mail</span>
+  </div>
+</div>
+
+{% endblock %}

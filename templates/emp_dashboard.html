@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Header -->
+<div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4">
+  <div>
+    <h1 class="page-title"><i class="bi bi-person-circle me-2"></i>My Profile</h1>
+    <p class="page-subtitle">Your employee details are shown below.</p>
+  </div>
+  <a href="/logout" class="btn btn-danger btn-sm">
+    <i class="bi bi-box-arrow-right me-1"></i>Logout
+  </a>
+</div>
+
+{% if emp %}
+<div class="row justify-content-center">
+  <div class="col-md-7 col-lg-5">
+    <div class="profile-card">
+
+      <!-- Colored Header -->
+      <div class="profile-header">
+        <div class="profile-avatar">
+          <i class="bi bi-person-fill" style="font-size:2rem; color:#fff;"></i>
+        </div>
+        <div class="profile-name">{{ emp[1] }}</div>
+        <div class="profile-sub">
+          <i class="bi bi-building me-1"></i>{{ emp[2] }}
+        </div>
+        <div class="mt-2">
+          <span style="background:rgba(255,255,255,0.2);color:#fff;border-radius:20px;padding:3px 14px;font-size:0.78rem;font-weight:600;">
+            <i class="bi bi-person-badge me-1"></i>Employee
+          </span>
+        </div>
+      </div>
+
+      <!-- Profile Details -->
+      <div class="profile-body">
+
+        <div class="profile-row">
+          <span class="profile-key">
+            <i class="bi bi-hash" style="color:#7c3aed;"></i> Employee ID
+          </span>
+          <span class="profile-val">#{{ emp[0] }}</span>
+        </div>
+
+        <div class="profile-row">
+          <span class="profile-key">
+            <i class="bi bi-person" style="color:#4f46e5;"></i> Full Name
+          </span>
+          <span class="profile-val">{{ emp[1] }}</span>
+        </div>
+
+        <div class="profile-row">
+          <span class="profile-key">
+            <i class="bi bi-building" style="color:#06b6d4;"></i> Department
+          </span>
+          <span class="profile-val">
+            <span class="chip chip-teal">{{ emp[2] }}</span>
+          </span>
+        </div>
+
+        <div class="profile-row">
+          <span class="profile-key">
+            <i class="bi bi-currency-rupee" style="color:#10b981;"></i> Salary
+          </span>
+          <span class="profile-val" style="color:#059669;font-size:1rem;">
+            ₹ {{ "{:,}".format(emp[3]|int) }}
+          </span>
+        </div>
+
+        <div class="profile-row">
+          <span class="profile-key">
+            <i class="bi bi-telephone" style="color:#f97316;"></i> Phone
+          </span>
+          <span class="profile-val">{{ emp[4] }}</span>
+        </div>
+
+        <div class="profile-row">
+          <span class="profile-key">
+            <i class="bi bi-person-fill" style="color:#ec4899;"></i> Username
+          </span>
+          <span class="profile-val" style="color:#7c3aed;">@{{ session.get('username') }}</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Welcome message -->
+    <div class="card mt-3 p-3 text-center" style="border-left:4px solid #7c3aed !important;">
+      <p class="mb-0" style="font-size:0.88rem;color:#6b7280;">
+        👋 Welcome, <strong style="color:#7c3aed">{{ emp[1] }}</strong>! 
+        Contact your admin for any profile changes.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+{% else %}
+<div class="text-center py-5">
+  <div style="font-size:4rem;">⚠️</div>
+  <h5 class="mt-3" style="color:#6b7280;">No profile data found.</h5>
+  <p style="color:#9ca3af;font-size:0.88rem;">Please contact the admin to update your profile.</p>
+</div>
+{% endif %}
+
+{% endblock %}

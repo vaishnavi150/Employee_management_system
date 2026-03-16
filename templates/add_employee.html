@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="d-flex align-items-center gap-3 mb-4">
+  <a href="/dashboard" class="btn btn-outline-secondary btn-sm">
+    <i class="bi bi-arrow-left"></i>
+  </a>
+  <div>
+    <h1 class="page-title mb-0"><i class="bi bi-person-plus me-2"></i>Add Employee</h1>
+    <p class="page-subtitle mb-0">Register a new employee into the system.</p>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-8 col-lg-6">
+    <div class="card p-4">
+
+      <form action="/save_employee" method="post">
+        <div class="row g-3">
+
+          <div class="col-12">
+            <label class="form-label"><i class="bi bi-person me-1"></i>Full Name</label>
+            <input class="form-control" type="text" name="ename" placeholder="e.g. Ravi Kumar" required>
+          </div>
+
+          <div class="col-sm-6">
+            <label class="form-label"><i class="bi bi-building me-1"></i>Department</label>
+            <input class="form-control" type="text" name="edept" placeholder="e.g. Engineering" required>
+          </div>
+
+          <div class="col-sm-6">
+            <label class="form-label"><i class="bi bi-currency-rupee me-1"></i>Salary</label>
+            <input class="form-control" type="number" name="esalary" placeholder="e.g. 50000" required>
+          </div>
+
+          <div class="col-sm-6">
+            <label class="form-label"><i class="bi bi-telephone me-1"></i>Phone Number</label>
+            <input class="form-control" type="text" name="ephone" placeholder="e.g. 9876543210" required>
+          </div>
+
+          <div class="col-sm-6">
+            <label class="form-label"><i class="bi bi-at me-1"></i>Username (Login)</label>
+            <input class="form-control" type="text" name="username" placeholder="Employee login username" required>
+          </div>
+
+          <div class="col-12 d-flex gap-2 mt-2">
+            <button class="btn btn-primary flex-grow-1" type="submit">
+              <i class="bi bi-person-check me-2"></i>Add Employee
+            </button>
+            <a href="/dashboard" class="btn btn-outline-secondary">Cancel</a>
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

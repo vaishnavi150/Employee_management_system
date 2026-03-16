@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="d-flex align-items-center gap-3 mb-4">
+  <a href="/view_employee" class="btn btn-outline-secondary btn-sm">
+    <i class="bi bi-arrow-left"></i>
+  </a>
+  <div>
+    <h1 class="page-title mb-0"><i class="bi bi-pencil-square me-2"></i>Edit Employee</h1>
+    <p class="page-subtitle mb-0">Update employee information below.</p>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-8 col-lg-6">
+    <div class="card p-4">
+
+      <form action="/update_employee" method="post">
+        <input type="hidden" name="eid" value="{{ emp[0] }}">
+
+        <div class="row g-3">
+
+          <div class="col-12">
+            <label class="form-label"><i class="bi bi-person me-1"></i>Full Name</label>
+            <input class="form-control" type="text" name="ename" value="{{ emp[1] }}" required>
+          </div>
+
+          <div class="col-sm-6">
+            <label class="form-label"><i class="bi bi-building me-1"></i>Department</label>
+            <input class="form-control" type="text" name="edept" value="{{ emp[2] }}" required>
+          </div>
+
+          <div class="col-sm-6">
+            <label class="form-label"><i class="bi bi-currency-rupee me-1"></i>Salary</label>
+            <input class="form-control" type="number" name="esalary" value="{{ emp[3] }}" required>
+          </div>
+
+          <div class="col-12">
+            <label class="form-label"><i class="bi bi-telephone me-1"></i>Phone Number</label>
+            <input class="form-control" type="text" name="ephone" value="{{ emp[4] }}" required>
+          </div>
+
+          <div class="col-12 d-flex gap-2 mt-2">
+            <button class="btn btn-success flex-grow-1" type="submit">
+              <i class="bi bi-check-circle me-2"></i>Update Employee
+            </button>
+            <a href="/view_employee" class="btn btn-outline-secondary">Cancel</a>
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
