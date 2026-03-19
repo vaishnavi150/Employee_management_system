@@ -13,18 +13,21 @@
       <form method="post" action="/contact">
 
         <div class="mb-3">
-          <label class="form-label"><i class="bi bi-chat-left-text me-1"></i>Your Request</label>
-          <textarea class="form-control" name="request" rows="4" placeholder="Describe your request here..."></textarea>
+          <label class="form-label"><i class="bi bi-person me-1"></i>Your Name</label>
+          <input class="form-control" type="text" name="name"
+                 placeholder="Enter your full name" required>
         </div>
 
         <div class="mb-3">
-          <label class="form-label"><i class="bi bi-person me-1"></i>Your Name</label>
-          <input class="form-control" type="text" name="name" placeholder="Enter your full name">
+          <label class="form-label"><i class="bi bi-envelope me-1"></i>Email Address</label>
+          <input class="form-control" type="email" name="email"
+                 placeholder="you@example.com" required>
         </div>
 
         <div class="mb-4">
-          <label class="form-label"><i class="bi bi-envelope me-1"></i>Email Address</label>
-          <input class="form-control" type="email" name="email" placeholder="you@example.com">
+          <label class="form-label"><i class="bi bi-chat-left-text me-1"></i>Your Message</label>
+          <textarea class="form-control" name="message" rows="5"
+                    placeholder="Describe your request here..." required></textarea>
         </div>
 
         <button class="btn btn-primary w-100" type="submit">
@@ -34,6 +37,13 @@
       </form>
     </div>
 
+    <!-- Info card -->
+    <div class="card p-3 text-center" style="border-left:4px solid #06b6d4 !important;">
+      <p class="mb-0" style="font-size:0.85rem;color:#6b7280;">
+        <i class="bi bi-info-circle me-1" style="color:#06b6d4;"></i>
+        A confirmation will be sent to your email and our team will respond promptly.
+      </p>
+    </div>
 
   </div>
 </div>

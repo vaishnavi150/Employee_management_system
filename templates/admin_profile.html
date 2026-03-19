@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4">
+  <div>
+    <h1 class="page-title"><i class="bi bi-person-circle me-2"></i>My Profile</h1>
+    <p class="page-subtitle">Manage your admin account details.</p>
+  </div>
+  <a href="/dashboard" class="btn btn-outline-secondary btn-sm">
+    <i class="bi bi-arrow-left me-1"></i>Back
+  </a>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-8 col-lg-6">
+    <div class="card p-4">
+
+      <!-- ── Photo + Name row ── -->
+      <div class="d-flex align-items-center gap-4 mb-4 pb-3"
+           style="border-bottom:1.5px solid var(--border);">
+
+        <!-- Avatar -->
+        <div style="position:relative;flex-shrink:0;">
+          {% if admin[5] %}
+            <img id="profilePreview"
+                 src="{{ url_for('static', filename='uploads/' + admin[5]) }}"
+                 style="width:80px;height:80px;border-radius:50%;object-fit:cover;
+                        border:3px solid #ede9fe;box-shadow:0 2px 12px rgba(124,58,237,0.18);">
+          {% else %}
+            <div id="profilePreview"
+                 style="width:80px;height:80px;border-radius:50%;
+                        background:linear-gradient(135deg,#7c3aed,#f97316);
+                        display:flex;align-items:center;justify-content:center;
+                        font-size:2rem;font-weight:900;color:#fff;
+                        border:3px solid #ede9fe;box-shadow:0 2px 12px rgba(124,58,237,0.18);">
+              {{ admin[2][0]|upper }}
+            </div>
+          {% endif %}
+          <label for="photoInput"
+                 style="position:absolute;bottom:2px;right:0;
+                        width:24px;height:24px;border-radius:50%;
+                        background:#7c3aed;color:#fff;cursor:pointer;
+                        display:flex;align-items:center;justify-content:center;
+                        font-size:0.65rem;box-shadow:0 1px 6px rgba(0,0,0,0.2);"
+                 title="Change photo">
+            <i class="bi bi-camera-fill"></i>
+          </label>
+        </div>
+
+        <!-- Name / email / role -->
+        <div>
+          <div style="font-family:'Nunito',sans-serif;font-size:1.15rem;
+                      font-weight:800;color:#1e1b4b;line-height:1.2;">
+            {{ admin[2] }}
+          </div>
+          <div style="font-size:0.8rem;color:#6b7280;margin:2px 0 6px;">
+            {{ admin[1] }}
+          </div>
+          <span class="chip" style="background:#fef3c7;color:#92400e;
+                                    font-size:0.72rem;font-weight:700;">
+            <i class="bi bi-shield-fill-check me-1"></i>Admin
+          </span>
+        </div>
+      </div>
+
+      <!-- ── Photo upload (hidden input auto-triggered by camera icon) ── -->
+      <form action="/admin_profile/upload_photo" method="post"
+            enctype="multipart/form-data" id="photoForm" class="mb-4">
+        <input type="file" name="photo" id="photoInput" accept="image/*"
+               style="display:none;" onchange="previewPhoto(this)">
+        <div class="d-flex gap-2 flex-wrap align-items-center"
+             style="font-size:0.82rem;color:#6b7280;">
+          <span><i class="bi bi-image me-1"></i>Profile photo</span>
+          <button class="btn btn-outline-secondary btn-sm" type="button"
+                  onclick="document.getElementById('photoInput').click()">
+            Choose
+          </button>
+          <button class="btn btn-primary btn-sm" type="submit" id="uploadBtn"
+                  style="display:none;">
+            <i class="bi bi-upload me-1"></i>Save
+          </button>
+          {% if admin[5] %}
+          <a href="/admin_profile/remove_photo" class="btn btn-sm"
+             style="border:1.5px solid #fca5a5;color:#ef4444;background:#fff;"
+             onclick="return confirm('Remove profile photo?')">
+            <i class="bi bi-trash me-1"></i>Remove
+          </a>
+          {% endif %}
+        </div>
+      </form>
+
+      <!-- ── Edit Info Form ── -->
+      <form action="/admin_profile/update_info" method="post">
+        <div class="mb-3">
+          <label class="form-label"><i class="bi bi-person me-1"></i>Username</label>
+          <input class="form-control" type="text" name="username"
+                 value="{{ admin[2] }}" required>
+        </div>
+        <div class="mb-4">
+          <label class="form-label"><i class="bi bi-envelope me-1"></i>Email Address</label>
+          <input class="form-control" type="email" name="email"
+                 value="{{ admin[1] }}" required>
+        </div>
+        <button class="btn btn-primary w-100" type="submit">
+          <i class="bi bi-check-circle me-2"></i>Save Changes
+        </button>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function previewPhoto(input) {
+  if (!input.files || !input.files[0]) return;
+  document.getElementById('uploadBtn').style.display = 'inline-flex';
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const el = document.getElementById('profilePreview');
+    if (el.tagName === 'DIV') {
+      const img = document.createElement('img');
+      img.id = 'profilePreview';
+      img.style.cssText = 'width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid #ede9fe;box-shadow:0 2px 12px rgba(124,58,237,0.18);';
+      el.parentNode.replaceChild(img, el);
+      img.src = e.target.result;
+    } else {
+      el.src = e.target.result;
+    }
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+</script>
+
+{% endblock %}

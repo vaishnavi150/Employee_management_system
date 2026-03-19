@@ -234,13 +234,13 @@ textarea.form-control { resize: none; }
   transition: transform 0.25s;
 }
 .stat-card:hover { transform: translateY(-4px) scale(1.02); }
-.stat-card.purple { background: linear-gradient(135deg, #7c3aed, #4f46e5) !important; box-shadow: 0 8px 24px rgba(124,58,237,0.3) !important; }
-.stat-card.teal   { background: linear-gradient(135deg, #06b6d4, #0284c7) !important; box-shadow: 0 8px 24px rgba(6,182,212,0.3) !important; }
-.stat-card.green  { background: linear-gradient(135deg, #10b981, #059669) !important; box-shadow: 0 8px 24px rgba(16,185,129,0.3) !important; }
-.stat-card.orange { background: linear-gradient(135deg, #f97316, #f59e0b) !important; box-shadow: 0 8px 24px rgba(249,115,22,0.3) !important; }
+.stat-card.s-purple { background: linear-gradient(135deg, #7c3aed, #4f46e5) !important; box-shadow: 0 8px 24px rgba(124,58,237,0.3) !important; }
+.stat-card.s-teal   { background: linear-gradient(135deg, #06b6d4, #0284c7) !important; box-shadow: 0 8px 24px rgba(6,182,212,0.3) !important; }
+.stat-card.s-green  { background: linear-gradient(135deg, #10b981, #059669) !important; box-shadow: 0 8px 24px rgba(16,185,129,0.3) !important; }
+.stat-card.s-orange { background: linear-gradient(135deg, #f97316, #f59e0b) !important; box-shadow: 0 8px 24px rgba(249,115,22,0.3) !important; }
 .stat-icon  { font-size: 2.2rem; margin-bottom: 0.5rem; }
 .stat-label { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; opacity: 0.85; }
-.stat-value { font-family: 'Nunito', sans-serif; font-size: 1.8rem; font-weight: 800; }
+.stat-val { font-family: 'Nunito', sans-serif; font-size: 1.8rem; font-weight: 800; }
 
 /* ===== ACTION CARDS ===== */
 .action-card {
@@ -350,7 +350,7 @@ a:hover { color: var(--indigo); }
 @media (max-width: 768px) {
   .auth-body { padding: 1.5rem; }
   .page-title { font-size: 1.4rem; }
-  .stat-value { font-size: 1.5rem; }
+  .stat-val { font-size: 1.5rem; }
   .ems-table { font-size: 0.8rem; }
   .ems-table thead th, .ems-table tbody td { padding: 0.7rem 0.8rem; }
   .profile-row { padding: 0.85rem 1.2rem; }
@@ -359,4 +359,246 @@ a:hover { color: var(--indigo); }
 @media (max-width: 480px) {
   .auth-card { margin: 0 0.5rem; }
   .action-card { padding: 1.4rem 1rem; }
+}
+
+/* ===== NAVBAR SEARCH BAR (admin only) ===== */
+.nav-search-form {
+  margin: 0.4rem 1rem 0.4rem 0;
+}
+.nav-search-wrap {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 25px;
+  padding: 0 4px 0 12px;
+  transition: all 0.25s ease;
+  min-width: 240px;
+}
+.nav-search-wrap:focus-within {
+  background: rgba(255,255,255,0.25);
+  border-color: rgba(255,255,255,0.6);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.15);
+  min-width: 280px;
+}
+.nav-search-icon {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  margin-right: 6px;
+}
+.nav-search-input {
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  color: #fff !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 0.85rem !important;
+  padding: 0.45rem 0 !important;
+  width: 100% !important;
+  box-shadow: none !important;
+}
+.nav-search-input::placeholder {
+  color: rgba(255,255,255,0.55) !important;
+}
+.nav-search-btn {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.search-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+.search-empty-icon {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 991px) {
+  .nav-search-form {
+    margin: 0.5rem 0;
+    width: 100%;
+  }
+  .nav-search-wrap {
+    min-width: unset;
+    width: 100%;
+  }
+  .nav-search-wrap:focus-within {
+    min-width: unset;
+  }
+}
+
+/* =============================================
+   NAVBAR — 3 STATE STYLES
+   ============================================= */
+
+/* Public navbar buttons */
+.nav-btn-ghost {
+  background: transparent !important;
+  border: 1.5px solid rgba(255,255,255,0.5) !important;
+  color: #fff !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  padding: 0.38rem 1rem !important;
+  border-radius: 8px !important;
+  transition: all 0.2s !important;
+}
+.nav-btn-ghost:hover {
+  background: rgba(255,255,255,0.15) !important;
+  border-color: rgba(255,255,255,0.8) !important;
+}
+
+.nav-btn-solid {
+  background: rgba(255,255,255,0.2) !important;
+  border: 1.5px solid rgba(255,255,255,0.5) !important;
+  color: #fff !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  padding: 0.38rem 1rem !important;
+  border-radius: 8px !important;
+  transition: all 0.2s !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+}
+.nav-btn-solid:hover {
+  background: rgba(255,255,255,0.35) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+}
+
+
+/* User badge */
+.nav-user-badge {
+  display: flex !important;
+  align-items: center;
+  gap: 7px;
+  padding: 0.3rem 0.7rem !important;
+  background: rgba(255,255,255,0.1) !important;
+  border-radius: 25px !important;
+  border: 1px solid rgba(255,255,255,0.25) !important;
+  transition: all 0.2s !important;
+}
+.nav-user-badge:hover,
+.nav-user-badge.show {
+  background: rgba(255,255,255,0.22) !important;
+  border-color: rgba(255,255,255,0.5) !important;
+}
+
+/* Avatar circle */
+.nav-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  letter-spacing: 0;
+}
+.nav-avatar-admin {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #78350f;
+}
+.nav-avatar-emp {
+  background: linear-gradient(135deg, #34d399, #10b981);
+  color: #064e3b;
+}
+
+/* Username text */
+.nav-uname {
+  color: rgba(255,255,255,0.9);
+  font-size: 0.85rem;
+  font-weight: 600;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Role chip */
+.nav-role-chip {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.nav-chip-admin {
+  background: rgba(251,191,36,0.25);
+  color: #fde68a;
+  border: 1px solid rgba(251,191,36,0.4);
+}
+.nav-chip-emp {
+  background: rgba(52,211,153,0.2);
+  color: #6ee7b7;
+  border: 1px solid rgba(52,211,153,0.35);
+}
+
+/* Dropdown menu */
+.nav-dropdown {
+  background: #1e1340 !important;
+  border: 1px solid rgba(124,58,237,0.35) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.35) !important;
+  padding: 6px !important;
+  min-width: 200px !important;
+  margin-top: 8px !important;
+}
+.nav-dropdown-header {
+  font-size: 0.82rem !important;
+  color: rgba(255,255,255,0.55) !important;
+  padding: 6px 10px 8px !important;
+}
+.nav-dropdown-header strong { color: rgba(255,255,255,0.9); }
+.nav-dropdown-item {
+  font-size: 0.88rem !important;
+  color: rgba(255,255,255,0.8) !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  transition: background 0.15s !important;
+}
+.nav-dropdown-item:hover {
+  background: rgba(124,58,237,0.25) !important;
+  color: #fff !important;
+}
+.nav-dropdown-logout {
+  color: #fca5a5 !important;
+}
+.nav-dropdown-logout:hover {
+  background: rgba(239,68,68,0.2) !important;
+  color: #fca5a5 !important;
+}
+.nav-divider {
+  border-color: rgba(255,255,255,0.1) !important;
+  margin: 4px 0 !important;
+}
+
+/* Dropdown toggle arrow colour */
+.nav-dropdown .dropdown-toggle::after { border-top-color: rgba(255,255,255,0.6); }
+
+/* Icon colour helpers */
+.text-purple { color: var(--purple-l) !important; }
+.text-teal   { color: #4cc9f0 !important; }
+.text-green  { color: var(--green) !important; }
+.text-orange { color: var(--orange) !important; }
+
+/* Responsive tweaks */
+@media (max-width: 991px) {
+  .nav-btn-ghost,
+  .nav-btn-solid { width: 100%; text-align: center; margin: 3px 0; }
+  .nav-user-badge { border-radius: 10px !important; }
+  .nav-clock { display: none; }
+  .nav-dropdown { background: rgba(30,19,64,0.98) !important; }
 }
