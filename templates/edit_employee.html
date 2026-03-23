@@ -15,7 +15,8 @@
   <div class="col-md-8 col-lg-6">
     <div class="card p-4">
 
-      <form action="/update_employee" method="post">
+      <!-- <form action="/update_employee" method="post"> -->
+        <form action="/edit/{{ emp[0] }}" method="post">
         <input type="hidden" name="eid" value="{{ emp[0] }}">
 
         <div class="row g-3">

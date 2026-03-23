@@ -21,9 +21,9 @@
 
         <!-- Avatar -->
         <div style="position:relative;flex-shrink:0;">
-          {% if admin[5] %}
+          {% if admin['profile_pic'] %}
             <img id="profilePreview"
-                 src="{{ url_for('static', filename='uploads/' + admin[5]) }}"
+                 src="{{ url_for('static', filename='uploads/' + admin['profile_pic']) }}"
                  style="width:80px;height:80px;border-radius:50%;object-fit:cover;
                         border:3px solid #ede9fe;box-shadow:0 2px 12px rgba(124,58,237,0.18);">
           {% else %}
@@ -33,7 +33,7 @@
                         display:flex;align-items:center;justify-content:center;
                         font-size:2rem;font-weight:900;color:#fff;
                         border:3px solid #ede9fe;box-shadow:0 2px 12px rgba(124,58,237,0.18);">
-              {{ admin[2][0]|upper }}
+              {{ admin['username'][0]|upper }}
             </div>
           {% endif %}
           <label for="photoInput"
@@ -51,10 +51,10 @@
         <div>
           <div style="font-family:'Nunito',sans-serif;font-size:1.15rem;
                       font-weight:800;color:#1e1b4b;line-height:1.2;">
-            {{ admin[2] }}
+            {{ admin['username'] }}
           </div>
           <div style="font-size:0.8rem;color:#6b7280;margin:2px 0 6px;">
-            {{ admin[1] }}
+            {{ admin['email'] }}
           </div>
           <span class="chip" style="background:#fef3c7;color:#92400e;
                                     font-size:0.72rem;font-weight:700;">
@@ -63,7 +63,7 @@
         </div>
       </div>
 
-      <!-- ── Photo upload (hidden input auto-triggered by camera icon) ── -->
+      <!-- ── Photo upload ── -->
       <form action="/admin_profile/upload_photo" method="post"
             enctype="multipart/form-data" id="photoForm" class="mb-4">
         <input type="file" name="photo" id="photoInput" accept="image/*"
@@ -79,7 +79,7 @@
                   style="display:none;">
             <i class="bi bi-upload me-1"></i>Save
           </button>
-          {% if admin[5] %}
+          {% if admin['profile_pic'] %}
           <a href="/admin_profile/remove_photo" class="btn btn-sm"
              style="border:1.5px solid #fca5a5;color:#ef4444;background:#fff;"
              onclick="return confirm('Remove profile photo?')">
@@ -94,12 +94,12 @@
         <div class="mb-3">
           <label class="form-label"><i class="bi bi-person me-1"></i>Username</label>
           <input class="form-control" type="text" name="username"
-                 value="{{ admin[2] }}" required>
+                 value="{{ admin['username'] }}" required>
         </div>
         <div class="mb-4">
           <label class="form-label"><i class="bi bi-envelope me-1"></i>Email Address</label>
           <input class="form-control" type="email" name="email"
-                 value="{{ admin[1] }}" required>
+                 value="{{ admin['email'] }}" required>
         </div>
         <button class="btn btn-primary w-100" type="submit">
           <i class="bi bi-check-circle me-2"></i>Save Changes
