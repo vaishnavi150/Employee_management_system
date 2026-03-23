@@ -1041,7 +1041,9 @@ def export_csv():
         headers={"Content-Disposition": "attachment; filename=employees.csv"},
     )
 
-
+@app.route("/about")
+def about():
+    return render_template("about.html")
 # ══════════════════════════════════════════════════════════════════════════════
 # CHANGE PASSWORD
 # ══════════════════════════════════════════════════════════════════════════════
