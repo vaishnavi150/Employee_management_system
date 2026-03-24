@@ -44,7 +44,7 @@
 
   <div class="row g-4">
 
-    {# ── RECENT EMPLOYEES ── #}
+    <!-- {# ── RECENT EMPLOYEES ── #}
     <div class="col-lg-8">
       <div class="page-hd-row mb-3">
         <div class="section-lbl mb-0">Recent Employees</div>
@@ -90,9 +90,9 @@
         <a href="/add_employee" class="btn btn-primary mt-2"><i class="bi bi-person-plus me-1"></i>Add Employee</a>
       </div>
       {% endif %}
-    </div>
+    </div> -->
 
-    {# ── QUICK ACTIONS ── #}
+    <!-- {# ── QUICK ACTIONS ── #}
     <div class="col-lg-4">
       <div class="section-lbl">Quick Actions</div>
       <div class="d-flex flex-column gap-3">
@@ -117,8 +117,40 @@
           <div class="action-desc">Download all employee records</div>
         </a>
       </div>
-    </div>
+    </div> -->
+<div class="row g-3">
+  <div class="col-6">
+    <a href="/add_employee" class="action-card c-purple">
+      <span class="action-icon">➕</span>
+      <div class="action-title">Add Employee</div>
+      <div class="action-desc">Register a new employee</div>
+    </a>
+  </div>
 
+  <div class="col-6">
+    <a href="/view_employee" class="action-card c-teal">
+      <span class="action-icon">📋</span>
+      <div class="action-title">All Employees</div>
+      <div class="action-desc">View and manage records</div>
+    </a>
+  </div>
+
+  <div class="col-6">
+    <a href="/manage_users" class="action-card c-orange">
+      <span class="action-icon">👤</span>
+      <div class="action-title">Manage Users</div>
+      <div class="action-desc">View all registered accounts</div>
+    </a>
+  </div>
+
+  <div class="col-6">
+    <a href="/export_csv" class="action-card c-purple">
+      <span class="action-icon">📥</span>
+      <div class="action-title">Export CSV</div>
+      <div class="action-desc">Download all employee records</div>
+    </a>
+  </div>
+</div>
   </div>
 </div>
 {% endblock %}

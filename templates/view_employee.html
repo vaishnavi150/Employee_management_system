@@ -17,15 +17,15 @@
   <div class="ems-table-wrap">
     <table class="ems-table">
       <thead>
-        <tr><th>#</th><th>Employee</th><th>Department</th><th>Salary</th><th>Phone</th><th style="text-align:center">Actions</th></tr>
+        <tr><th>ID</th><th>Employee</th><th>Department</th><th>Salary</th><th>Phone</th><th style="text-align:center">Actions</th></tr>
       </thead>
       <tbody>
         {% for e in employees %}
         <tr>
-          <td><span class="chip chip-gray">#{{ e[0] }}</span></td>
+          <td><span class="chip chip-gray">{{ e[0] }}</span></td>
           <td>
             <div class="d-flex align-items-center gap-2">
-              <div class="emp-avatar">{{ e[1][0]|upper }}</div>
+              <div class="emp-avatar"></div>
               <div>
                 <div style="font-weight:600;font-size:.875rem">{{ e[1] }}</div>
                 <div style="font-size:.74rem;color:var(--text-3)">@{{ e[5] }}</div>
