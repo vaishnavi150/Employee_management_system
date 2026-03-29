@@ -727,7 +727,7 @@ app.config["MAIL_SERVER"]   = "smtp.gmail.com"
 app.config["MAIL_PORT"]     = 587
 app.config["MAIL_USE_TLS"]  = True
 app.config["MAIL_USERNAME"] = "vaishnavisunkara126@gmail.com"
-app.config["MAIL_PASSWORD"] = "mton ahrh ffqr etzr"
+app.config["MAIL_PASSWORD"] = "zmst zhlg yujn dgso"
 mail       = Mail(app)
 serializer = URLSafeTimedSerializer(app.secret_key)
 
@@ -976,6 +976,29 @@ def search():
 # ══════════════════════════════════════════════════════════════════════════════
 
 @app.route("/forgot_password", methods=["GET", "POST"])
+# def forgot_password():
+    # if request.method == "POST":
+    #     email = request.form["email"].strip()
+    #     user  = q("SELECT * FROM users WHERE email=?", (email,), fetch="one")
+    #     if user:
+    #         token      = serializer.dumps(email, salt="reset-password")
+    #         reset_link = f"{BASE_URL}/reset_password/{token}"
+    #         msg = Message(
+    #             "EMS — Password Reset Request",
+    #             sender=app.config["MAIL_USERNAME"],
+    #             recipients=[email],
+    #         )
+    #         msg.body = (
+    #             f"Hello {user['username']},\n\n"
+    #             f"Reset your EMS password here (valid for 10 minutes):\n{reset_link}\n\n"
+    #             f"Ignore this email if you did not request it.\n\n— EMS Team"
+    #         )
+    #         mail.send(msg)
+    #         flash("Password reset link sent to your email!", "success")
+    #         return redirect("/forgot_password")
+    #     flash("No account found with that email address.", "danger")
+    #     return redirect("/forgot_password")
+    # return render_template("forgot_password.html")
 def forgot_password():
     if request.method == "POST":
         email = request.form["email"].strip()
@@ -999,7 +1022,6 @@ def forgot_password():
         flash("No account found with that email address.", "danger")
         return redirect("/forgot_password")
     return render_template("forgot_password.html")
-
 
 @app.route("/reset_password/<token>", methods=["GET", "POST"])
 def reset_password(token):

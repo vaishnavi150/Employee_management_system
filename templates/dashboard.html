@@ -1,17 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <div class="container">
 
-  <div class="page-hd-row page-hd">
+  <!-- HEADER -->
+  <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4">
+
     <div>
-      <h1><i class="bi bi-speedometer2 me-2" style="color:var(--brand)"></i>Dashboard</h1>
-      <p>Welcome back, <strong>{{ session.get('username') }}</strong> 👋 Here's what's happening.</p>
+      <h1 class="page-title mb-1">
+        <i class="bi bi-speedometer2 me-2"></i>Dashboard
+      </h1>
+      <p class="page-subtitle mb-0">
+        Welcome back, <strong>{{ session.get('username') }}</strong> 👋 Here's what's happening.
+      </p>
     </div>
-    <a href="/add_employee" class="btn btn-primary"><i class="bi bi-person-plus me-1"></i>Add Employee</a>
+
+
+
   </div>
 
-  {# ── STATS ── #}
+  <!-- STATS -->
   <div class="row g-3 mb-4">
+
     <div class="col-6 col-md-3">
       <div class="card stat-card s-purple">
         <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
@@ -19,6 +29,7 @@
         <div class="stat-val">{{ total_emp }}</div>
       </div>
     </div>
+
     <div class="col-6 col-md-3">
       <div class="card stat-card s-teal">
         <div class="stat-icon"><i class="bi bi-building"></i></div>
@@ -26,6 +37,7 @@
         <div class="stat-val">{{ total_dept }}</div>
       </div>
     </div>
+
     <div class="col-6 col-md-3">
       <div class="card stat-card s-green">
         <div class="stat-icon"><i class="bi bi-person-check-fill"></i></div>
@@ -33,6 +45,7 @@
         <div class="stat-val">{{ total_users }}</div>
       </div>
     </div>
+
     <div class="col-6 col-md-3">
       <div class="card stat-card s-orange">
         <div class="stat-icon"><i class="bi bi-bar-chart-fill"></i></div>
@@ -40,117 +53,46 @@
         <div class="stat-val">{{ total_emp }}</div>
       </div>
     </div>
+
   </div>
 
-  <div class="row g-4">
+  <!-- QUICK ACTIONS -->
+  <div class="row g-3">
 
-    <!-- {# ── RECENT EMPLOYEES ── #}
-    <div class="col-lg-8">
-      <div class="page-hd-row mb-3">
-        <div class="section-lbl mb-0">Recent Employees</div>
-        <a href="/view_employee" style="font-size:.8rem;font-weight:600">View all <i class="bi bi-arrow-right"></i></a>
-      </div>
-      {% if recent %}
-      <div class="ems-table-wrap">
-        <table class="ems-table">
-          <thead>
-            <tr><th>Employee</th><th>Department</th><th>Salary</th><th>Actions</th></tr>
-          </thead>
-          <tbody>
-            {% for e in recent %}
-            <tr>
-              <td>
-                <div class="d-flex align-items-center gap-2">
-                  <div class="emp-avatar">{{ e[1][0]|upper }}</div>
-                  <div>
-                    <div style="font-weight:600;font-size:.875rem">{{ e[1] }}</div>
-                    <div style="font-size:.75rem;color:var(--text-3)"><i class="bi bi-telephone me-1"></i>{{ e[4] }}</div>
-                  </div>
-                </div>
-              </td>
-              <td><span class="chip chip-teal">{{ e[2] }}</span></td>
-              <td style="font-weight:700;color:var(--green)">₹{{ "{:,}".format(e[3]|int) }}</td>
-              <td>
-                <div class="d-flex gap-1">
-                  <a href="/edit/{{ e[0] }}" class="btn btn-warning btn-sm"><i class="bi bi-pencil"></i></a>
-                  <a href="/delete/{{ e[0] }}" class="btn btn-danger btn-sm"
-                     onclick="return confirm('Delete {{ e[1] }}?')"><i class="bi bi-trash"></i></a>
-                </div>
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-      {% else %}
-      <div class="card empty-state">
-        <i class="bi bi-people"></i>
-        <h5>No employees yet</h5>
-        <p>Add your first employee to get started.</p>
-        <a href="/add_employee" class="btn btn-primary mt-2"><i class="bi bi-person-plus me-1"></i>Add Employee</a>
-      </div>
-      {% endif %}
-    </div> -->
+    <div class="col-12 col-sm-6 col-lg-3">
+      <a href="/add_employee" class="action-card c-purple h-100">
+        <span class="action-icon">➕</span>
+        <div class="action-title">Add Employee</div>
+        <div class="action-desc">Register a new employee</div>
+      </a>
+    </div>
 
-    <!-- {# ── QUICK ACTIONS ── #}
-    <div class="col-lg-4">
-      <div class="section-lbl">Quick Actions</div>
-      <div class="d-flex flex-column gap-3">
-        <a href="/add_employee" class="action-card c-purple">
-          <span class="action-icon">➕</span>
-          <div class="action-title">Add Employee</div>
-          <div class="action-desc">Register a new employee</div>
-        </a>
-        <a href="/view_employee" class="action-card c-teal">
-          <span class="action-icon">📋</span>
-          <div class="action-title">All Employees</div>
-          <div class="action-desc">View and manage records</div>
-        </a>
-        <a href="/manage_users" class="action-card c-orange">
-          <span class="action-icon">👤</span>
-          <div class="action-title">Manage Users</div>
-          <div class="action-desc">View all registered accounts</div>
-        </a>
-        <a href="/export_csv" class="action-card c-purple">
-          <span class="action-icon">📥</span>
-          <div class="action-title">Export CSV</div>
-          <div class="action-desc">Download all employee records</div>
-        </a>
-      </div>
-    </div> -->
-<div class="row g-3">
-  <div class="col-6">
-    <a href="/add_employee" class="action-card c-purple">
-      <span class="action-icon">➕</span>
-      <div class="action-title">Add Employee</div>
-      <div class="action-desc">Register a new employee</div>
-    </a>
+    <div class="col-12 col-sm-6 col-lg-3">
+      <a href="/view_employee" class="action-card c-teal h-100">
+        <span class="action-icon">📋</span>
+        <div class="action-title">All Employees</div>
+        <div class="action-desc">View and manage records</div>
+      </a>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+      <a href="/manage_users" class="action-card c-orange h-100">
+        <span class="action-icon">👤</span>
+        <div class="action-title">Manage Users</div>
+        <div class="action-desc">View all registered accounts</div>
+      </a>
+    </div>
+
+    <div class="col-12 col-sm-6 col-lg-3">
+      <a href="/export_csv" class="action-card c-purple h-100">
+        <span class="action-icon">📥</span>
+        <div class="action-title">Export CSV</div>
+        <div class="action-desc">Download all employee records</div>
+      </a>
+    </div>
+
   </div>
 
-  <div class="col-6">
-    <a href="/view_employee" class="action-card c-teal">
-      <span class="action-icon">📋</span>
-      <div class="action-title">All Employees</div>
-      <div class="action-desc">View and manage records</div>
-    </a>
-  </div>
-
-  <div class="col-6">
-    <a href="/manage_users" class="action-card c-orange">
-      <span class="action-icon">👤</span>
-      <div class="action-title">Manage Users</div>
-      <div class="action-desc">View all registered accounts</div>
-    </a>
-  </div>
-
-  <div class="col-6">
-    <a href="/export_csv" class="action-card c-purple">
-      <span class="action-icon">📥</span>
-      <div class="action-title">Export CSV</div>
-      <div class="action-desc">Download all employee records</div>
-    </a>
-  </div>
 </div>
-  </div>
-</div>
+
 {% endblock %}
